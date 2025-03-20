@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementWebApplication.Data;
+using SubjectManagementWebApplication.Models.Subjects;
 
-namespace SubjectManagementWebApplication.Models.Subjects
+namespace SubjectManagementWebApplication.Pages.SubTopic
 {
     public class EditModel : PageModel
     {
-        private readonly SubjectManagementWebApplication.Data.SubjectContext _context;
+        private readonly SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext _context;
 
-        public EditModel(SubjectManagementWebApplication.Data.SubjectContext context)
+        public EditModel(SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext context)
         {
             _context = context;
         }

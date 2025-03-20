@@ -1,0 +1,38 @@
+﻿@page
+@model SubjectManagementWebApplication.Pages.Topic.IndexModel
+
+@{
+    ViewData["Title"] = "Topics and Subtopics";
+}
+
+<h1>Topics and Subtopics</h1>
+
+<p>
+    <a asp-page="/SubTopic/Create">Create New SubTopic</a>
+</p>
+
+@foreach (var topic in Model.Topics)
+{
+    <h3>@topic.TopicName</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SubTopic Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subtopic in topic.SubTopics)
+            {
+                <tr>
+                    <td>@subtopic.SubTopicName</td>
+                    <td>
+                        <a asp-page="/SubTopic/Edit" asp-route-id="@subtopic.SubTopicID">Edit</a> |
+                        <a asp-page="/SubTopic/Details" asp-route-id="@subtopic.SubTopicID">Details</a> |
+                        <a asp-page="/SubTopic/Delete" asp-route-id="@subtopic.SubTopicID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

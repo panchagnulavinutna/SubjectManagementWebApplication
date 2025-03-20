@@ -1,19 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SubjectManagementWebApplication.Models.Subjects
 {
-    public class Topics
+    public class Topic
     {
         [Key]
         public int TopicID { get; set; }
 
         [Required]
-        [StringLength(255)]
-        public string TopicName { get; set; }
+        public string TopicName { get; set; } = string.Empty;
 
-        // Navigation property for related SubTopics
-        public ICollection<SubTopics> SubTopics { get; set; } = new List<SubTopics>();
+        // Relationship: One Topic has many SubTopics
+        public ICollection<SubTopic> SubTopics { get; set; } = new List<SubTopic>();
     }
 }

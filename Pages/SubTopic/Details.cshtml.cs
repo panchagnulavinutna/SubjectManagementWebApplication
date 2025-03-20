@@ -6,19 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementWebApplication.Data;
+using SubjectManagementWebApplication.Models.Subjects;
 
-namespace SubjectManagementWebApplication.Models.Subjects
+namespace SubjectManagementWebApplication.Pages.Topic
 {
     public class DetailsModel : PageModel
     {
-        private readonly SubjectManagementWebApplication.Data.SubjectContext _context;
+        private readonly SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext _context;
 
-        public DetailsModel(SubjectManagementWebApplication.Data.SubjectContext context)
+        public DetailsModel(SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext context)
         {
             _context = context;
         }
 
-        public Topics Topics { get; set; } = default!;
+        public SubTopics SubTopics { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,14 +28,14 @@ namespace SubjectManagementWebApplication.Models.Subjects
                 return NotFound();
             }
 
-            var topics = await _context.Topics.FirstOrDefaultAsync(m => m.TopicID == id);
-            if (topics == null)
+            var subtopics = await _context.SubTopics.FirstOrDefaultAsync(m => m.SubTopicID == id);
+            if (subtopics == null)
             {
                 return NotFound();
             }
             else
             {
-                Topics = topics;
+                SubTopics = subtopics;
             }
             return Page();
         }

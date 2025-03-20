@@ -1,0 +1,33 @@
+﻿@page
+@model SubjectManagementWebApplication.Pages.SubTopic.CreateModel
+
+@{
+    ViewData["Title"] = "Create SubTopic";
+}
+
+<h1>Create SubTopic</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="SubTopic.SubTopicName"></label>
+        <input asp-for="SubTopic.SubTopicName" class="form-control" />
+        <span asp-validation-for="SubTopic.SubTopicName" class="text-danger"></span>
+    </div>
+
+    <!-- Dropdown for selecting Topic -->
+    <div class="form-group">
+        <label for="TopicID">Select Topic</label>
+        <select asp-for="SubTopic.TopicID" class="form-control">
+            <option value="">-- Select Topic --</option> <!-- Empty by default -->
+            @foreach (var topic in Model.TopicsList)
+            {
+                <option value="@topic.Value">@topic.Text</option>
+            }
+        </select>
+        <span asp-validation-for="SubTopic.TopicID" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<a asp-page="/SubTopic/Index">Back to List</a>

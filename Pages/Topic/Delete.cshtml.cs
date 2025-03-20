@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SubjectManagementWebApplication.Data;
+using SubjectManagementWebApplication.Models.Subjects;
 
-namespace SubjectManagementWebApplication.Models.Subjects
+namespace SubjectManagementWebApplication.Pages.SubTopic
 {
     public class DeleteModel : PageModel
     {
-        private readonly SubjectManagementWebApplication.Data.SubjectContext _context;
+        private readonly SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext _context;
 
-        public DeleteModel(SubjectManagementWebApplication.Data.SubjectContext context)
+        public DeleteModel(SubjectManagementWebApplication.Data.SubjectManagementWebApplicationContext context)
         {
             _context = context;
         }
